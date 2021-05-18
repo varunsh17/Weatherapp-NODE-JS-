@@ -1,0 +1,50 @@
+<!-- http://api.openweathermap.org/data/2.5/weather?q=pune&appid=80ddd0b9b69c9d65a0931d56584aab7e -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather app</title>
+</head>
+<body>
+    <div class="box">
+        
+        <div class="info">
+            <h3 class="location">{%location%},{%country%}</h3>
+            <p id ='date'></p>
+            <h1 class="temp">{%tempval%}</h1>
+            <h4 class="tempmin_max">min {%tempmin%} | max {%tempmax%} </h4>
+        </div>
+    </div>
+    <script>
+        const curDate= document.getElementById('date')
+        const getCurrentDay=()=>{
+            var weekday =new Array(7);
+            weekday[0]='sun'
+            weekday[1]='mon'
+            weekday[2]='tue'
+            weekday[3]='wed'
+            weekday[4]='thru'
+            weekday[5]='fri'
+            weekday[6]='sat'
+
+            let currentTime=new Date();
+            let day = (weekday[currentTime.getDay()])
+            return day
+        }
+        getCurrentDay();
+        const getCurrentTime=()=>{
+            var now=new Date();
+            var month = now.getMonth()+1;
+            var day = now.getDate();
+            let hours = now.getHours();
+            let mins = now.getMinutes();
+            return `${day} ${month} | ${hours}:${mins}`
+        }
+        getCurrentTime();
+        curDate.innerHTML= getCurrentDay()+' | ' +getCurrentTime();
+
+    </script>
+</body>
+</html>
